@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
+import Hero from "./Components/Sections/Hero";
+import Features from "./Components/Sections/Features";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,6 +20,9 @@ function App() {
             </ul>
           </div>
         </div>
+
+        <Hero/>
+        <Features/>
       </div>
     </>
   );
