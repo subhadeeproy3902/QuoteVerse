@@ -1,28 +1,24 @@
 import React, { useState } from "react";
 import "./App.css";
-import Hero from "./Components/Sections/Hero";
-import Features from "./Components/Sections/Features";
+import Header from "./Components/Sections/Header";
+import Home from "./Components/Pages/Home";
+import About from "./Components/Pages/About";
+import Team from "./Components/Pages/Team";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0);
+
+
 
   return (
     <>
-      <div className="wrapper flex flex-col">
-        <div className="header sticky flex justify-between items-center">
-          <div className="logo">
-            <h1>Quote Verse</h1>
-          </div>
-          <div className="nav">
-            <ul className="flex flex-row gap-6">
-              <li className="nav-item">About</li>
-              <li className="nav-item">Know More</li>
-            </ul>
-          </div>
-        </div>
-
-        <Hero/>
-        <Features/>
+      <Header/>
+      <div className="bg-slate-900 flex flex-col">
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/about" element={<About/>} />
+          <Route path="/team" element={<Team/>} />
+        </Routes>
       </div>
     </>
   );
