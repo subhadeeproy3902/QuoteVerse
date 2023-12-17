@@ -8,33 +8,10 @@ import Loading3 from "./Loading3";
 
 const Home = () => {
   const [showAll, setShowAll] = useState(false);
-  const tabs = [
-    "All",
-    "Age",
-    "Change",
-    "Conservative",
-    "Creativity",
-    "Education",
-    "Failure",
-    "Family",
-    "Friendship",
-    "Happiness",
-    "Imagination",
-    "Inspirational",
-    "Knowledge",
-    "Life",
-    "Love",
-    "Motivational",
-    "Technology",
-    "Truth",
-    "Weakness",
-    "Wisdom",
-    "Work",
-  ];
-
   const [allTags, setAllTags] = useState([]);
 
   const [quotes, setQuotes] = useState([]);
+  const [quotes2, setQuotes2] = useState([]);
   const [tag, setTag] = useState("All");
   const [page, setPage] = useState(1);
 
@@ -42,17 +19,22 @@ const Home = () => {
   const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
+    setQuotes2([]);
+    setPage(1);
+  }, [tag]);
+
+  useEffect(() => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
         const alltags = await getTags(); // Wait for the Promise to resolve
-        setAllTags(alltags);
+        setAllTags(alltags.slice(0, alltags.length - 1));
 
         const getRandomQuotes = async () => {
           setIsLoading(true);
           if (tag === "All") {
             const res = await axios.get(
-              `https://api.quotable.io/quotes?page=${page}&limit=15`
+              `https://api.quotable.io/quotes?page=${page}&limit=20`
             );
             if (res.data.results.length === 0) {
               setHasMore(false);
@@ -60,12 +42,16 @@ const Home = () => {
             console.log(res.data.results);
             setQuotes((prevQuotes) => [...prevQuotes, ...res.data.results]);
           } else {
-            const res = await axios.get(
-              `https://api.quotable.io/quotes/random?tags=${tag}&limit=5`
-            );
+            setQuotes([]); // Clear the previous quotes
 
-            console.log(res.data);
-            setQuotes(res.data);
+            const res = await axios.get(
+              `https://api.quotable.io/quotes?page=${page}&tags=${tag}&limit=20`
+            );
+            if (res.data.results.length === 0) {
+              setHasMore(false);
+            }
+            console.log(res.data.results);
+            setQuotes2((prevQuotes) => [...prevQuotes, ...res.data.results]);
           }
           setIsLoading(false);
         };
@@ -110,18 +96,21 @@ const Home = () => {
         </nav>
       </div>
       <div className="p-6 mt-6" id="gallery">
-        {quotes.map((quote) => (
-          <QuoteCard quote={quote} />
+        {quotes.map((quote, index) => (
+          <QuoteCard key={`quote-${index}`} quote={quote} />
+        ))}
+        {quotes2.map((quote2, index) => (
+          <QuoteCard key={`quote-${index}`} quote={quote2} />
         ))}
       </div>
       {isLoading && <Loading3 />}
       <button
         onClick={loadMore}
-        className="p-2 my-16 bg-blue-500 text-white rounded"
+        className={`p-2 my-16 bg-blue-500 text-white rounded ${isLoading && "hidden"}`}
       >
         Load More
       </button>
-      {!hasMore && <p>You have reached the end</p>}
+      {!hasMore && <p className="text-gray-400"></p>}
     </div>
   );
 };
