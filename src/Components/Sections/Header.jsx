@@ -15,7 +15,7 @@ export default function Header() {
     <header className="flex flex-wrap sm:justify-start fixed sm:flex-nowrap z-50 w-full bg-white text-sm py-4 dark:bg-gray-800">
       <nav className="max-w-[90rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between" aria-label="Global">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex-none text-2xl tracking-widest font-semibold dark:text-white" id="lol">Quote Verse</Link>
+          <Link to="/" className="flex-none text-2xl tracking-widest font-semibold dark:text-white" id="lol">QuoteVerse</Link>
           <div className="sm:hidden">
             <button
               type="button"
