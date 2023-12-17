@@ -1,5 +1,6 @@
+const api = process.env.REACT_APP_API_KEY;
 
-const url = "https://api.quotable.io/tags";
+const url = `https://${api}/tags`;
 
 const getTags = async () => {
     try {
