@@ -18,6 +18,8 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
 
+  const api = process.env.REACT_APP_API_KEY;
+
   useEffect(() => {
     setQuotes2([]);
     setPage(1);
@@ -34,7 +36,7 @@ const Home = () => {
           setIsLoading(true);
           if (tag === "All") {
             const res = await axios.get(
-              `https://api.quotable.io/quotes?page=${page}&limit=20`
+              `https://${api}/quotes?page=${page}&limit=20`
             );
             if (res.data.results.length === 0) {
               setHasMore(false);
@@ -45,7 +47,7 @@ const Home = () => {
             setQuotes([]); // Clear the previous quotes
 
             const res = await axios.get(
-              `https://api.quotable.io/quotes?page=${page}&tags=${tag}&limit=20`
+              `https://${api}/quotes?page=${page}&tags=${tag}&limit=20`
             );
             if (res.data.results.length === 0) {
               setHasMore(false);
