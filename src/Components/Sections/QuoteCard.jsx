@@ -24,7 +24,7 @@ const QuoteCard = ({ quote }) => {
             - {quote?.author}
           </p>
           <div className='flex relative justify-between gap-5 w-full items-center mt-5'>
-            <div className='flex flex-wrap gap-y-3'>
+            <div className='flex flex-wrap w-11/12 gap-y-3'>
               {tags.map((tag, index) => {
                 return (
                   <span key={index} className="bg-blue-500 flex flex-col justify-center items-center text-slate-950 text-sm font-medium me-2 py-1 px-3.5 rounded">{tag}</span>

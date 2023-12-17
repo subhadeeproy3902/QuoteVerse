@@ -28,13 +28,13 @@ const Home = () => {
       try {
         setIsLoading(true);
         const alltags = await getTags(); // Wait for the Promise to resolve
-        setAllTags(alltags);
+        setAllTags(alltags.slice(0, alltags.length - 1));
 
         const getRandomQuotes = async () => {
           setIsLoading(true);
           if (tag === "All") {
             const res = await axios.get(
-              `https://api.quotable.io/quotes?page=${page}&limit=15`
+              `https://api.quotable.io/quotes?page=${page}&limit=20`
             );
             if (res.data.results.length === 0) {
               setHasMore(false);
@@ -45,7 +45,7 @@ const Home = () => {
             setQuotes([]); // Clear the previous quotes
 
             const res = await axios.get(
-              `https://api.quotable.io/quotes?page=${page}&tags=${tag}&limit=15`
+              `https://api.quotable.io/quotes?page=${page}&tags=${tag}&limit=20`
             );
             if (res.data.results.length === 0) {
               setHasMore(false);
