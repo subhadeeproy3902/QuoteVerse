@@ -1,0 +1,2 @@
+GET https://api.quotable.io/quotes/random?tags=business&page=2&limit=5
+Content-Type: application/json

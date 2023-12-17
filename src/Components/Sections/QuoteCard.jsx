@@ -23,7 +23,7 @@ const QuoteCard = ({ quote }) => {
           <p className="mt-2 text-gray-700">
             - {quote?.author}
           </p>
-          <div className='flex w-11/12 relative justify-between gap-5 items-center mt-5'>
+          <div className='flex relative justify-between gap-5 w-full items-center mt-5'>
             <div className='flex flex-wrap gap-y-3'>
               {tags.map((tag, index) => {
                 return (
@@ -36,7 +36,7 @@ const QuoteCard = ({ quote }) => {
                 viewBox="0 0 512 512" xmlSpace="preserve">
                 <g>
                   <path fill='#fff' d="M512,255.995L277.045,65.394v103.574c-17.255,0-36.408,0-57.542,0c-208.59,0-249.35,153.44-201.394,266.128
-		c9.586-103.098,142.053-100.701,237.358-100.701c7.247,0,14.446,0,21.578,0v112.211L512,255.995z"/>
+		              c9.586-103.098,142.053-100.701,237.358-100.701c7.247,0,14.446,0,21.578,0v112.211L512,255.995z"/>
                 </g>
               </svg>
             </button>
