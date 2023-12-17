@@ -70,9 +70,9 @@ const About = () => {
           </div>
           <div className="w-full px-4 mb-10 lg:w-1/2 lg:mb-0">
             <img
-              src="https://i.postimg.cc/9MW8G96J/pexels-the-coach-space-2977565.jpg"
+              src="https://i.postimg.cc/59Tn5NbX/Sigma-grindset-patrick-bateman.webp"
               alt=""
-              className="relative z-40 object-cover w-full h-full rounded"
+              className="relative z-40 object-cover w-full h-full rounded-lg"
             />
           </div>
         </div>
