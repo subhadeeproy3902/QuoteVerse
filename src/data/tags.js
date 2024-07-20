@@ -1,4 +1,4 @@
-export const tags = [
+const tags = [
   {
     "_id": "PIyOMHYqPd",
     "name": "Age",
@@ -536,3 +536,5 @@ export const tags = [
     "dateModified": "2023-04-14"
   }
 ]
+
+export tags;
